@@ -1,0 +1,424 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+th,
+td {
+  font-size: 2rem;
+}
+
+/* Navigation bar styles */
+.navigation-bar-container {
+  background: #3d087b;
+  min-height: 10vh;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.nav-items {
+  flex: 1 1 30rem;
+}
+
+#logo {
+  color: #fff;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 10px;
+  padding: 1rem 0rem;
+}
+
+.nav-items:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+
+.search-type {
+  font-size: 1.5rem;
+  background: none;
+  color: #fff;
+  border: none;
+}
+
+.search-type option {
+  background: #3d087b;
+  color: #fff;
+}
+
+.search-blog,
+.search-blog-btn {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  width: 80%;
+}
+.search-blog-btn {
+  width: auto;
+}
+
+.q:focus {
+  outline: none;
+}
+.search-blog-btn {
+  background: #fff;
+  border-radius: 5px;
+}
+
+.search-blog-btn:hover {
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+}
+
+.nav-links-item {
+  display: inline;
+}
+
+.nav-links-item a,
+.nav-links-item button {
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+  padding: 0.5rem 1rem;
+  margin: 0rem 1rem;
+  transition: background-color 0.6s ease;
+  background: none;
+  border: none;
+}
+
+.nav-links a:hover,
+.nav-links-item button:hover {
+  background-color: #fff;
+  color: #3d087b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Left menu Css Design */
+.left-menu-generic,
+.right-menu-generic {
+  margin: 2rem 1rem;
+  min-width: 20vw;
+  max-width: 20vw;
+  min-height: 50vh;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.top-posts-title,
+.top-authors-title {
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  background: #3d087b;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.top-posts-ul,
+.top-authors-ul {
+  list-style: none;
+}
+
+.top-posts-li,
+.top-authors-li {
+  margin: 2rem 0rem;
+}
+
+.top-posts-link {
+  font-size: 2rem;
+}
+
+.top-authors-link {
+  font-size: 2rem;
+  text-decoration: none;
+  background: lightblue;
+  padding: 0.5rem 1rem;
+  color: #000;
+}
+
+/* Home Screen */
+.main-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.home-screen-container,
+.signup-form,
+.login-form,
+.new-blog-form,
+.profile-form,
+.users-table {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0em;
+}
+
+/* Post Component Design */
+.post-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  padding: 1rem 1rem;
+  margin: 1rem 0.5rem;
+  min-height: 50vh;
+}
+
+.post-title,
+.new-post-title {
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem 0rem;
+}
+
+.post-image {
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.post-content {
+  font-size: 2rem;
+  padding: 1rem 1rem;
+}
+
+.read-more-about-post {
+  padding: 0rem 2rem;
+}
+
+.about-post {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+}
+
+/* Footer Component Design */
+
+.footer-container h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.footer-container {
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #3d087b;
+}
+
+.footer-option-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.socials ul,
+.suggested-sites ul {
+  list-style: none;
+}
+
+.socials ul li,
+.suggested-sites ul li {
+  margin: 1rem 3rem;
+}
+
+.socials ul li a,
+.suggested-sites ul li a {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 3rem;
+  color: #fff;
+  letter-spacing: 5px;
+  padding: 1rem 0rem;
+  font-style: italic;
+}
+
+/* Sign Up Page Design */
+.signup-form-container,
+.login-form-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form Labels */
+.form-label {
+  font-size: 2rem;
+  padding: 0.5rem 0rem;
+  display: none;
+  color: red;
+}
+
+.signup-form-container input,
+.login-form-container input,
+.profile-form input {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.signup-btn,
+.login-btn {
+  font-size: 2rem;
+  padding: 0.5rem 4rem;
+  margin: 1rem 0rem;
+  background: #3d087b;
+  border: none;
+  color: #fff;
+}
+
+.signup-btn:hover,
+.login-btn:hover,
+.submit-post:hover,
+.clear-form:hover {
+  cursor: pointer;
+}
+
+.already-registered,
+.new-user,
+.go-back {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* New Post Create Form Design */
+textarea {
+  overflow: scroll;
+  font-size: 2rem;
+  padding: 0.5rem 2em;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.new-post-image-container {
+  display: block;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 2rem 0rem;
+  margin-top: 1rem;
+}
+
+.post-thumb {
+  opacity: 0;
+}
+
+.submit-post,
+.clear-form {
+  padding: 1rem 0rem;
+  margin: 1rem 0rem;
+  font-size: 2rem;
+  background: #3d087b;
+  color: #fff;
+  border: none;
+}
+
+.clear-form {
+  background: lightcoral;
+}
+
+/* Disabling border from view page */
+.view-post-form {
+  border: none;
+  font-size: 2rem;
+}
+
+.view-post-form:focus {
+  outline: none;
+}
+
+/* Profile Sections */
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image img {
+  border-radius: 50%;
+}
+
+.profile-name {
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem 0rem;
+}
+
+/* Icons Margin */
+.fa-solid {
+  margin: 0rem 1rem;
+}
+
+.show {
+  display: block !important;
+}
+
+/* Media query for width of 1177px */
+
+@media screen and (max-width: 1177px) {
+  .left-menu-generic,
+  .right-menu-generic {
+    display: none;
+  }
+  .home-screen-container,
+  .signup-form,
+  .login-form,
+  .new-blog-form,
+  .profile-form,
+  .users-table {
+    width: 95vw;
+    margin-left: 1rem;
+  }
+}
