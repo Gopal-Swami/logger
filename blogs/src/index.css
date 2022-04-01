@@ -206,6 +206,7 @@ td {
 
 .post-image {
   overflow: hidden;
+  height: 40vh;
 }
 
 .post-image img {
