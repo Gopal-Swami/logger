@@ -9,7 +9,7 @@ const multer = require('multer');
 //Image upload Api Part
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let uploadPath = path.join(__dirname, '../blogs/public/images');
+    let uploadPath = path.join(__dirname, '../blogs/build/images');
     console.log(uploadPath);
     cb(null, uploadPath);
   },
