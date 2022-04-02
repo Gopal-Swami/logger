@@ -110,7 +110,7 @@ const NewBlogScreen = () => {
             <Loader />
           ) : (
             <div className="post-image">
-              <img src={post.photo} alt="This is a brand new Post on #1" />
+              <img src={post.photo} alt={post.photo} />
             </div>
           )
         ) : (

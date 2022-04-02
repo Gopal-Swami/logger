@@ -5,7 +5,7 @@ const Post = ({ id, title, description, photo, author, publishedOn }) => {
     <div className="post-container">
       <h1 className="post-title">{title}</h1>
       <div className="post-image">
-        <img src={photo} alt="This is a brand new Post on #1" />
+        <img src={photo} alt={photo} />
       </div>
       <p className="post-content">
         {description.substring(0, 100) + '...'}
