@@ -9,10 +9,8 @@ const multer = require('multer');
 //Image upload Api Part
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let dirPath = __dirname.split('routes')[0] + 'blogs\\public\\images';
-    // let uploadPath = path.join(__dirname, '../blogs/public/images');
-    console.log(dirPath);
-    cb(null, dirPath);
+    let uploadPath = path.join(__dirname, '../blogs/public/images');
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + file.originalname);
