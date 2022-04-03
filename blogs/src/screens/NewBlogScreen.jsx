@@ -6,12 +6,14 @@ import {
   getPostById,
   createPost,
   updateUserPost,
+  listPosts,
 } from '../actions/postActions';
 
 const NewBlogScreen = () => {
   const [postLoading, setPostLoading] = useState(true);
   const [title, setTitle] = useState('');
   const [file, setFile] = useState(null);
+  const [image, setImage] = useState('');
   const [fileNameForUser, setFileNameForUser] = useState(null);
   const [postBody, setPostBody] = useState('');
   const params = useParams();
@@ -41,9 +43,14 @@ const NewBlogScreen = () => {
     formdata.append('description', postBody);
     formdata.append('username', userInfo.username);
     formdata.append('file', file);
+    formdata.append('image', image);
     if (pid) {
       if (title !== '' && postBody !== '') {
         dispatch(updateUserPost(pid, formdata));
+        dispatch(listPosts());
+        if (updatedPost) {
+          alert('Post Updated Successfully');
+        }
         navigate('/');
       } else {
         alert('Please Add Mandatory Fields');
@@ -51,7 +58,10 @@ const NewBlogScreen = () => {
     } else {
       if (title !== '' && postBody !== '') {
         dispatch(createPost(formdata));
-
+        dispatch(listPosts());
+        if (newPost) {
+          alert('Post Uploaded Successfully');
+        }
         navigate('/');
       } else {
         alert('Please Add Mandatory Fields');
@@ -87,91 +97,109 @@ const NewBlogScreen = () => {
       navigate('/login');
     }
   }, [dispatch, pid]);
-  return (
-    <div className="new-blog-container">
-      <div className="new-blog-form">
-        <h1 className="new-post-title">New Post</h1>
-        <textarea
-          name="post-title"
-          id="post-title"
-          cols="30"
-          rows="1"
-          className="new-post-title"
-          placeholder="Post Title.........."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        ></textarea>
-        <label
-          htmlFor="new-post-title"
-          className="post-title-warn form-label"
-        ></label>
-        {pid ? (
-          postLoading ? (
+  return userLoading ? (
+    <Loader />
+  ) : (
+    <>
+      <div className="new-blog-container">
+        <div className="new-blog-form">
+          <h1 className="new-post-title">{pid ? 'Update Post' : 'New Post'}</h1>
+          <span>{error && error}</span>
+          <textarea
+            name="post-title"
+            id="post-title"
+            cols="30"
+            rows="1"
+            className="new-post-title"
+            placeholder="Post Title.........."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          ></textarea>
+          <label
+            htmlFor="new-post-title"
+            className="post-title-warn form-label"
+          >
+            {newPostError
+              ? newPostError
+              : updatePostError
+              ? updatePostError
+              : ''}
+          </label>
+          {pid ? (
+            postLoading ? (
+              <Loader />
+            ) : (
+              <div className="post-image">
+                <img src={post.photo} alt={post.photo} />
+              </div>
+            )
+          ) : (
+            ''
+          )}
+          <label
+            htmlFor="post-thumb"
+            className="form-label new-post-image-container"
+          >
+            {post ? 'Update Photo' : 'Select or Drop Cover Photo'}
+            {fileNameForUser && (
+              <>
+                <br />
+                {fileNameForUser}
+              </>
+            )}
+          </label>
+          <input
+            type="file"
+            onChange={(e) => {
+              setFile(e.target.files[0]);
+              setFileNameForUser(e.target.files[0].name);
+            }}
+            className="post-thumb"
+            id="post-thumb"
+          />
+          <input
+            type="text"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            placeholder={pid ? 'Update Cover' : 'Add Cover Url'}
+            className="post-cover"
+          />
+          <label
+            htmlFor="post-thumb"
+            className="form-label post-thumb-warn"
+          ></label>
+          <textarea
+            name="post-body"
+            id="post-body"
+            cols="30"
+            rows="10"
+            className="post-body"
+            placeholder="Post Body........."
+            value={postBody}
+            onChange={(e) => setPostBody(e.target.value)}
+          ></textarea>
+          <label
+            htmlFor="post-body"
+            className="post-body-warn form-label"
+          ></label>
+          {newPostLoading || updatePostLoading ? (
             <Loader />
           ) : (
-            <div className="post-image">
-              <img src={post.photo} alt={post.photo} />
-            </div>
-          )
-        ) : (
-          ''
-        )}
-        <label
-          htmlFor="post-thumb"
-          className="form-label new-post-image-container"
-        >
-          {post ? 'Update Photo' : 'Select or Drop Cover Photo'}
-          {fileNameForUser && (
-            <>
-              <br />
-              {fileNameForUser}
-            </>
+            <button
+              onClick={createNewPosts}
+              className="submit-post"
+              id="submit-post"
+            >
+              {pid ? 'Update' : 'Post'}
+            </button>
           )}
-        </label>
-        <input
-          type="file"
-          onChange={(e) => {
-            setFile(e.target.files[0]);
-            setFileNameForUser(e.target.files[0].name);
-          }}
-          className="post-thumb"
-          id="post-thumb"
-        />
-        <label
-          htmlFor="post-thumb"
-          className="form-label post-thumb-warn"
-        ></label>
-        <textarea
-          name="post-body"
-          id="post-body"
-          cols="30"
-          rows="10"
-          className="post-body"
-          placeholder="Post Body........."
-          value={postBody}
-          onChange={(e) => setPostBody(e.target.value)}
-        ></textarea>
-        <label
-          htmlFor="post-body"
-          className="post-body-warn form-label"
-        ></label>
-        {newPostLoading || updatePostLoading ? (
-          <Loader />
-        ) : (
-          <button
-            onClick={createNewPosts}
-            className="submit-post"
-            id="submit-post"
-          >
-            {pid ? 'Update' : 'Post'}
-          </button>
-        )}
 
-        <button onClick={handleDiscard} className="clear-form">
-          Discard
-        </button>
+          <button onClick={handleDiscard} className="clear-form">
+            Discard
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
