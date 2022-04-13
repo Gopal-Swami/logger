@@ -47,7 +47,7 @@ router.post('/newpost', upload.single('file'), async (req, res) => {
     username: req.body.username,
     title: req.body.title,
     description: req.body.description,
-    photo: req.body.image ? req.body.image : filepath,
+    photo: req.body.image !== '' ? req.body.image : filepath,
   });
   try {
     const createdPost = await newPost.save();
@@ -85,7 +85,7 @@ router.put('/:id', upload.single('file'), async (req, res) => {
               username: req.body.username,
               title: req.body.title,
               description: req.body.description,
-              photo: req.body.image ? req.body.image : filepath,
+              photo: req.body.image !== '' ? req.body.image : filepath,
             },
           },
           { new: true }

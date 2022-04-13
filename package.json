@@ -4,14 +4,17 @@
   "description": "Blog application UI",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js --ignore blogs",
-    "start":"node server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix blogs && npm run build --prefix blogs"
+    "start": "node backend/server",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix blogs",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix blogs && npm run build --prefix blogs"
   },
   "author": "Gopal",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^7.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",

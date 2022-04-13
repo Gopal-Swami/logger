@@ -32,7 +32,7 @@ export const listPosts = (searchType, keyword) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `/api/posts?searchType=${searchType}&keyword=${keyword}`
+      `http://localhost:5000/api/posts?searchType=${searchType}&keyword=${keyword}`
     );
 
     dispatch({
@@ -56,7 +56,9 @@ export const listTopPosts = () => async (dispatch) => {
       type: LIST_LATEST_POSTS_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/posts/topposts`);
+    const { data } = await axios.get(
+      `http://localhost:5000/api/posts/topposts`
+    );
 
     dispatch({
       type: LIST_LATEST_POSTS_SUCCESS,
@@ -79,7 +81,7 @@ export const getPostById = (id) => async (dispatch) => {
       type: LIST_POST_BY_ID_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/posts/${id}`);
+    const { data } = await axios.get(`http://localhost:5000/api/posts/${id}`);
 
     dispatch({
       type: LIST_POST_BY_ID_SUCCESS,
@@ -102,7 +104,9 @@ export const listUserPosts = (username) => async (dispatch) => {
       type: LIST_USER_POSTS_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/posts?user=${username}`);
+    const { data } = await axios.get(
+      `http://localhost:5000/api/posts?user=${username}`
+    );
 
     dispatch({
       type: LIST_USER_POSTS_SUCCESS,
@@ -129,7 +133,11 @@ export const createPost = (formdata) => async (dispatch) => {
       headers: { 'content-type': 'multipart/form-data' },
     };
 
-    const { data } = await axios.post('/api/posts/newpost', formdata, config);
+    const { data } = await axios.post(
+      'http://localhost:5000/api/posts/newpost',
+      formdata,
+      config
+    );
 
     dispatch({
       type: CREATE_POST_SUCCESS,
@@ -156,7 +164,11 @@ export const updateUserPost = (pid, formdata) => async (dispatch) => {
       headers: { 'content-type': 'multipart/form-data' },
     };
 
-    const { data } = await axios.put(`/api/posts/${pid}`, formdata, config);
+    const { data } = await axios.put(
+      `http://localhost:5000/api/posts/${pid}`,
+      formdata,
+      config
+    );
 
     dispatch({
       type: UPDATE_POST_SUCCESS,
@@ -186,7 +198,7 @@ export const deletePostById = (pid, username) => async (dispatch) => {
     };
 
     const { data } = await axios.delete(
-      `/api/posts/${pid}`,
+      `http://localhost:5000/api/posts/${pid}`,
       { data: { username } },
       config
     );
