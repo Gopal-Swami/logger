@@ -26,7 +26,7 @@ export const registerUser =
       };
 
       const { data } = await axios.post(
-        'http://localhost:5000/api/auth/register',
+        '/api/auth/register',
         { username, name, email, password },
         config
       );
@@ -66,7 +66,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      'http://localhost:5000/api/auth/login',
+      '/api/auth/login',
       { email, password },
       config
     );
@@ -107,7 +107,7 @@ export const updateUser =
       };
 
       const { data } = await axios.put(
-        `http://localhost:5000/api/users/${userid}`,
+        `/api/users/${userid}`,
         { userId: userid, username, name, email, password: newPassword },
         config
       );
